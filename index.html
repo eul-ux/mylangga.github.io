@@ -97,13 +97,7 @@ button:hover {
     margin-top: 30px;
     font-weight: bold;
     color: #fff;
-}
-
-.bg-audio {
-    position: fixed;
-    bottom: 15px;
-    right: 15px;
-    z-index: 999;
+    
 }
 </style>
 </head>
@@ -111,7 +105,7 @@ button:hover {
 <body>
 
 <div class="bg-audio">
-    <audio id="bgAudio" loop controls>
+    <audio id="bgAudio" autoplay loop muted>
         <source src="audio/palagi.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -249,6 +243,13 @@ style.innerHTML = `
 }`;
 document.head.appendChild(style);
 
+// Unmute music after first user interaction
+document.addEventListener("click", function() {
+    const audio = document.getElementById("bgAudio");
+    audio.muted = false;
+    audio.play();
+}, { once: true });
+    
 </script>
 
 </body>
