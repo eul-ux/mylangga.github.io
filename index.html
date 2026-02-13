@@ -3,78 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Forever ❤️</title>
+<title>For My Forever Langging 💗</title>
+
 <style>
-    body {
-        margin: 0;
-        padding: 0;
-        font-family: 'Georgia', serif;
-        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-        color: white;
-        text-align: center;
-        overflow-x: hidden;
-    }
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Georgia', serif;
+    background: linear-gradient(-45deg, #ff758c, #ff7eb3, #fad0c4, #ff9a9e);
+    background-size: 400% 400%;
+    animation: gradientMove 12s ease infinite;
+    color: white;
+    text-align: center;
+    overflow-x: hidden;
+}
 
-    .container {
-        padding: 40px 20px;
-        max-width: 900px;
-        margin: auto;
-        animation: fadeIn 2s ease-in-out;
-    }
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
-    h1 {
-        font-size: 40px;
-        margin-bottom: 10px;
-    }
+.container {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    animation: fadeIn 2s ease-in-out;
+}
 
-    h2 {
-        font-weight: normal;
-        margin-bottom: 40px;
-    }
+h1 {
+    font-size: 42px;
+}
 
-    p {
-        font-size: 18px;
-        line-height: 1.8;
-        margin-bottom: 20px;
-    }
+p {
+    font-size: 18px;
+    line-height: 1.9;
+}
 
-    .heart {
-        font-size: 60px;
-        animation: heartbeat 1.5s infinite;
-    }
+.heart {
+    font-size: 70px;
+    animation: heartbeat 1.3s infinite;
+}
 
-    button {
-        padding: 12px 25px;
-        font-size: 16px;
-        background: white;
-        color: #ff4e6a;
-        border: none;
-        border-radius: 30px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+}
 
-    button:hover {
-        background: #ff4e6a;
-        color: white;
-    }
+button {
+    padding: 14px 28px;
+    font-size: 16px;
+    background: white;
+    color: #ff4e6a;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    margin: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(255,255,255,0.6);
+}
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+button:hover {
+    transform: scale(1.1);
+    background: #ff4e6a;
+    color: white;
+    box-shadow: 0 0 25px rgba(255,255,255,1);
+}
 
-    @keyframes heartbeat {
-        0% { transform: scale(1); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-    }
+.floating-heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+.love-counter {
+    font-size: 22px;
+    margin-top: 20px;
+    font-weight: bold;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 </style>
 </head>
+
 <body>
 
 <div class="container">
-    <div class="heart">❤️</div>
+    <div class="heart">💗</div>
     <h1>Happy Valentine’s Day, Langga_sharlin</h1>
     <h2>You Are My Forever, My Home, My Peace</h2>
 
@@ -87,10 +112,10 @@
     <p>
     You are beautiful even when you just wake up. 
     Even without makeup. 
-    Your lips, your nose, your chin, your eyes — they are perfect to me. 
+    Your lips, your nose, your chin, your eyes they are perfect to me. 
     But what makes you even more beautiful is your personality. 
     Your jolly laugh. Your softness. Your strength. 
-    Even your sexy body is just a bonus — because your heart is what captured mine.
+    Even your sexy body is just a bonus because your heart is what captured mine.
     </p>
 
     <p>
@@ -131,11 +156,48 @@
 
     <p>
     Forever yours,
-    <br><strong>Your Future Husband ❤️</strong>
+    <br><strong>Your Future Husband Eulysis 💗</strong>
     </p>
 
-    <button onclick="alert('I Love You Forever ❤️')">Click if You Love Me Too 💕</button>
+    <button onclick="loveClick()">Click if You Love Me Too 💕</button>
+    <button onclick="showPromise()">My Promise 💍</button>
+    <button onclick="surprise()">Surprise 💖</button>
+
+    <div class="love-counter">Love Clicks: <span id="count">0</span></div>
 </div>
+
+<script>
+let counter = 0;
+
+function loveClick() {
+    counter++;
+    document.getElementById("count").innerText = counter;
+    createHeart();
+}
+
+function showPromise() {
+    alert("I will choose you again and again, in every lifetime. 💗");
+}
+
+function surprise() {
+    alert("Future Mrs. Sharlin loading... 💍✨");
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("floating-heart");
+    heart.innerText = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (20 + Math.random() * 30) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+}
+
+setInterval(createHeart, 1500);
+</script>
 
 </body>
 </html>
